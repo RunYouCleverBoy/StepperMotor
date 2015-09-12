@@ -6,8 +6,8 @@ StepperMotor::StepperMotor(float stride, int c1, int c2, int c3, int c4) {
   phase = 0;
   stepsPerRevolution = 360.0 / stride;
  
-  coils = new byte[4]{c1, c2, c3, c4};
-  stateLut = new byte[8] {
+  coils = new uint8_t[4]{c1, c2, c3, c4};
+  stateLut = new uint8_t[8] {
     0b0001,
     0b0011,
     0b0010,
@@ -51,7 +51,7 @@ void StepperMotor::step(float angles) {
 
 void StepperMotor::iteration(bool cw) {
   long phaseBeganAt = micros();
-  byte state = cw ? phase : 7-phase;
+  uint8_t state = cw ? phase : 7-phase;
   for (int coil = 0; coil < 4; coil++) {
     digitalWrite(coils[coil], stateLut[state] & (1<<coil));
   }

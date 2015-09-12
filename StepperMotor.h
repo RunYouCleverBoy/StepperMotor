@@ -13,8 +13,8 @@ private:
   int phase;
   float stepsPerRevolution;
   float singleStepDelay;
-  byte *stateLut;
-  byte *coils;
+  uint8_t *stateLut;
+  uint8_t *coils;
   void iteration(bool cw);
 };
 
